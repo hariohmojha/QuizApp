@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuizDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QuizDb.dbo.Participant' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Participant">
+    <Key>
+      <PropertyRef Name="timeSpent" />
+    </Key>
+    <Property Name="participantID" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="score" Type="int" />
+    <Property Name="timeSpent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="QnID" />
+    </Key>
+    <Property Name="QnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Qn" Type="varchar" MaxLength="250" />
+    <Property Name="ImageName" Type="varchar" MaxLength="50" />
+    <Property Name="Option1" Type="varchar" MaxLength="50" />
+    <Property Name="Option2" Type="varchar" MaxLength="50" />
+    <Property Name="Option3" Type="varchar" MaxLength="50" />
+    <Property Name="Option4" Type="varchar" MaxLength="50" />
+    <Property Name="Answer" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="QuizDbModelStoreContainer">
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participant" EntityType="Self.Participant" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Participant].[participantID] AS [participantID], 
+[Participant].[Name] AS [Name], 
+[Participant].[Email] AS [Email], 
+[Participant].[score] AS [score], 
+[Participant].[timeSpent] AS [timeSpent]
+FROM [dbo].[Participant] AS [Participant]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
