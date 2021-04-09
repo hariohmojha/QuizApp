@@ -13,10 +13,10 @@ namespace QuizApi.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBModel : DbContext
+    public partial class DBModels : DbContext
     {
-        public DBModel()
-            : base("name=DBModel")
+        public DBModels()
+            : base("name=DBModels")
         {
         }
     

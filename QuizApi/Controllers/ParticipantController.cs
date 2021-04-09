@@ -14,7 +14,7 @@ namespace QuizApi.Controllers
       [Route("api/InsertParticipant")]
       public  Participant insert(Participant model)
     {
-      using (DBModel db = new DBModel())
+      using (DBModels db = new DBModels())
       {
         db.Participants.Add(model);
         db.SaveChanges();
@@ -25,7 +25,7 @@ namespace QuizApi.Controllers
     [Route("api/UpdateParticipant")]
     public void UpdateOutput(Participant model)
     {
-      using (DBModel db = new DBModel())
+      using (DBModels db = new DBModels())
       {
         db.Entry(model).State = System.Data.EntityState.Modified;
         db.SaveChanges();

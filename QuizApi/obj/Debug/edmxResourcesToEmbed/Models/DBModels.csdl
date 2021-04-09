@@ -15,15 +15,15 @@
   </EntityType>
   <EntityType Name="Participant">
     <Key>
-      <PropertyRef Name="timeSpent" />
+      <PropertyRef Name="ParticipantID" />
     </Key>
-    <Property Name="participantID" Type="Int32" />
+    <Property Name="ParticipantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="score" Type="Int32" />
-    <Property Name="timeSpent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Score" Type="Int32" />
+    <Property Name="TimeSpent" Type="Int32" />
   </EntityType>
-  <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DBModels" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Questions" EntityType="Self.Question" />
     <EntitySet Name="Participants" EntityType="Self.Participant" />
   </EntityContainer>

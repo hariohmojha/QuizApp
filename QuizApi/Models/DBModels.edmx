@@ -4,18 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuizDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuizDb.dbo.Participant' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="QuizDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Participant">
           <Key>
-            <PropertyRef Name="timeSpent" />
+            <PropertyRef Name="ParticipantID" />
           </Key>
-          <Property Name="participantID" Type="int" />
+          <Property Name="ParticipantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="score" Type="int" />
-          <Property Name="timeSpent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Score" Type="int" />
+          <Property Name="TimeSpent" Type="int" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -31,19 +29,10 @@ warning 6002: The table/view 'QuizDb.dbo.Participant' does not have a primary ke
           <Property Name="Answer" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="QuizDbModelStoreContainer">
+          <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Participant" EntityType="Self.Participant" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Participant].[participantID] AS [participantID], 
-[Participant].[Name] AS [Name], 
-[Participant].[Email] AS [Email], 
-[Participant].[score] AS [score], 
-[Participant].[timeSpent] AS [timeSpent]
-FROM [dbo].[Participant] AS [Participant]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuizDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -62,15 +51,15 @@ FROM [dbo].[Participant] AS [Participant]</DefiningQuery>
         </EntityType>
         <EntityType Name="Participant">
           <Key>
-            <PropertyRef Name="timeSpent" />
+            <PropertyRef Name="ParticipantID" />
           </Key>
-          <Property Name="participantID" Type="Int32" />
+          <Property Name="ParticipantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="score" Type="Int32" />
-          <Property Name="timeSpent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="TimeSpent" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBModels" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Questions" EntityType="Self.Question" />
           <EntitySet Name="Participants" EntityType="Self.Participant" />
         </EntityContainer>
@@ -79,7 +68,7 @@ FROM [dbo].[Participant] AS [Participant]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QuizDbModelStoreContainer" CdmEntityContainer="DBModel">
+        <EntityContainerMapping StorageEntityContainer="QuizDbModelStoreContainer" CdmEntityContainer="DBModels">
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="QuizDbModel.Question">
               <MappingFragment StoreEntitySet="Questions">
@@ -97,11 +86,11 @@ FROM [dbo].[Participant] AS [Participant]</DefiningQuery>
           <EntitySetMapping Name="Participants">
             <EntityTypeMapping TypeName="QuizDbModel.Participant">
               <MappingFragment StoreEntitySet="Participant">
-                <ScalarProperty Name="participantID" ColumnName="participantID" />
+                <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="score" ColumnName="score" />
-                <ScalarProperty Name="timeSpent" ColumnName="timeSpent" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="TimeSpent" ColumnName="TimeSpent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

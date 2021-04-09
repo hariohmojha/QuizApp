@@ -14,10 +14,10 @@ namespace QuizApi.Models
     
     public partial class Participant
     {
-        public Nullable<int> participantID { get; set; }
+        public int ParticipantID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public Nullable<int> score { get; set; }
-        public int timeSpent { get; set; }
+        public Nullable<int> Score { get; set; }
+        public Nullable<int> TimeSpent { get; set; }
     }
 }

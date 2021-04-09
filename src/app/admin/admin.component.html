@@ -1,0 +1,55 @@
+<p>admin works!</p>
+<div class="row">
+    <div class="col s6 offset-s3">
+      <div class="card">
+        <div class="col s6">
+          <h2>question feed</h2>
+        </div>
+        <div class="card-content">
+            <form #registerForm="ngForm" >
+              <div class="row">
+                <div class="input-field col s12">
+                
+                  <input type="text" name="Question" #Question ngModel required>
+                  <label>Question</label>
+                </div>
+              
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                
+                    <input type="text" name="option1" #option1 ngModel required>
+                  <label>option1</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                
+                    <input type="text" name="option2" #option2 ngModel required>
+                  <label>option2</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                
+                    <input type="text" name="option3" #option3 ngModel required>
+                  <label>option3</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                
+                    <input type="text" name="option4" #option4 ngModel required>
+                  <label>option4</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn-large btn-submit" type="submit" (click)="onSubmit(Question.value,option1.value,option2.value,option3.value,option4.value)">Start</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QuizDbModelStoreContainer" CdmEntityContainer="DBModel">
+  <EntityContainerMapping StorageEntityContainer="QuizDbModelStoreContainer" CdmEntityContainer="DBModels">
     <EntitySetMapping Name="Questions">
       <EntityTypeMapping TypeName="QuizDbModel.Question">
         <MappingFragment StoreEntitySet="Questions">
@@ -18,11 +18,11 @@
     <EntitySetMapping Name="Participants">
       <EntityTypeMapping TypeName="QuizDbModel.Participant">
         <MappingFragment StoreEntitySet="Participant">
-          <ScalarProperty Name="participantID" ColumnName="participantID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="score" ColumnName="score" />
-          <ScalarProperty Name="timeSpent" ColumnName="timeSpent" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="TimeSpent" ColumnName="TimeSpent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -11,6 +11,9 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './route';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { QuizService } from './shared/quiz.service';
+import { AuthGuard } from './authG/auth.guard';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     NavbarComponent,
     QuizComponent,
-    ResultComponent
+    ResultComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,HttpClientModule
     
   ],
-  providers: [],
+  providers: [QuizService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

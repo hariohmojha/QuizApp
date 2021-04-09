@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultComponent implements OnInit {
 
- emailpattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+
 
   constructor() { }
 

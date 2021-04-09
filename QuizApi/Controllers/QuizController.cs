@@ -11,11 +11,11 @@ namespace QuizApi.Controllers
   public class QuizController : ApiController
   {
     [HttpGet]
-    [Route("api/Question")]
+    [Route("api/Questions")]
 
     public HttpResponseMessage GetQuestions()
     {
-      using (DBModel db = new DBModel())
+      using (DBModels db = new DBModels())
       {
         var Qns = db.Questions.Select(x => new { QnID = x.QnID, Qn = x.Qn, ImageName = x.ImageName, x.Option1, x.Option2, x.Option3, x.Option4 })
           .OrderBy(y => Guid.NewGuid()).Take(10).ToArray();
@@ -36,7 +36,7 @@ namespace QuizApi.Controllers
 
     public HttpResponseMessage GetAnswers(int[] QIds)
     {
-      using (DBModel db = new DBModel())
+      using (DBModels db = new DBModels())
       {
         var result = db.Questions
                    .AsEnumerable()
@@ -49,6 +49,22 @@ namespace QuizApi.Controllers
 
 
 
+    }
+
+    [HttpPost]
+    [Route("api/CrateQuestion")]
+    public HttpResponseMessage CrateQuestion(Question question)
+    {
+      using (DBModels db = new DBModels())
+      {
+        var result = db.Questions.Add(question);
+        db.SaveChanges();
+                   
+        return this.Request.CreateResponse(HttpStatusCode.OK, result);
+      }
+
+   
+      
     }
   }
 }
