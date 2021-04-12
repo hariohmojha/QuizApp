@@ -19,5 +19,8 @@ export class NavbarComponent implements OnInit {
     clearInterval(this.quizService.timer);
     this.router.navigate(['/register']);
   }
+  admin() {
+    this.router.navigate(['adminlogin'])
+  }
 
 }

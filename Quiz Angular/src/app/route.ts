@@ -4,7 +4,7 @@ import { AuthGuard } from "./authG/auth.guard";
 import { QuizComponent } from "./quiz/quiz.component";
 import { RegisterComponent } from "./register/register.component";
 import { ResultComponent } from "./result/result.component";
-
+import {AdminLoginComponent} from "./admin-login/admin-login.component"
 
 export const appRoutes:Routes=[
 {path:'register', component:RegisterComponent},
@@ -12,5 +12,6 @@ export const appRoutes:Routes=[
 {path:'result', component:ResultComponent,canActivate:[AuthGuard]},
 {path:'', redirectTo:'/register', pathMatch:'full'},
 {path:'admin', component:AdminComponent},
+{path:'adminlogin', component:AdminLoginComponent}
 
 ];

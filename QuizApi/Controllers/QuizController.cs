@@ -10,25 +10,27 @@ namespace QuizApi.Controllers
 {
   public class QuizController : ApiController
   {
-    [HttpGet]
-    [Route("api/Questions")]
-
-    public HttpResponseMessage GetQuestions()
-    {
-      using (DBModels db = new DBModels())
-      {
-        var Qns = db.Questions.Select(x => new { QnID = x.QnID, Qn = x.Qn, ImageName = x.ImageName, x.Option1, x.Option2, x.Option3, x.Option4 })
-          .OrderBy(y => Guid.NewGuid()).Take(10).ToArray();
-        var updated = Qns.AsEnumerable().Select(x => new
+        [HttpGet]
+        [Route("api/Questions")]
+        public HttpResponseMessage GetQuestions()
         {
-          QnId = x.QnID,
-          Qn = x.Qn,
-          Imagename = x.ImageName,
-          options = new string[] { x.Option1, x.Option2, x.Option3, x.Option4 }
-        }).ToList();
-
-        return this.Request.CreateResponse(HttpStatusCode.OK, updated);
-      }
+            using (DBModels db = new DBModels())
+            {
+                var Qns = db.Questions
+                    .Select(x => new { QnID = x.QnID, Qn = x.Qn, ImageName = x.ImageName, x.Option1, x.Option2, x.Option3, x.Option4 })
+                    .OrderBy(y => Guid.NewGuid())
+                    .Take(10)
+                    .ToArray();
+                var updated = Qns.AsEnumerable()
+                    .Select(x => new
+                    {
+                        QnID = x.QnID,
+                        Qn = x.Qn,
+                        ImageName = x.ImageName,
+                        Options = new string[] { x.Option1, x.Option2, x.Option3, x.Option4 }
+                    }).ToList();
+                return this.Request.CreateResponse(HttpStatusCode.OK, updated);
+            }
     }
 
     [HttpPost]

@@ -67,5 +67,4 @@ export class QuizService {
     return this.http.post(this.rootUrl + '/api/CrateQuestion', Qustionlist);
   }
 
-
 }

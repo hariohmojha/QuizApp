@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuizService } from './shared/quiz.service';
 import { AuthGuard } from './authG/auth.guard';
 import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AdminComponent } from './admin/admin.component';
     NavbarComponent,
     QuizComponent,
     ResultComponent,
-    AdminComponent
+    AdminComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
